@@ -5,11 +5,22 @@
 }
 
 body {
-	background: linear-gradient(to right, grey, white);
+	
 }
 
 #ptitle {
 	float: right;
 }
 
+.content1 {
+  
+  	background-color: darkgrey;
+}
+.content1.active {
+  
+  	background-color: yellow;
+}
 
+.sprite {
+	background-image: url("img/neu.png");
+}

@@ -30,8 +30,11 @@ console.log(player);
 
 //- Timer/Metrics
 ticks=0;
+light=true;
+alive=true;
+ageLevel=0;
 const timePassing = () =>{
-	console.log(`RUNTIME ${ticks}s`);
+	console.log(`RUNTIME ${ticks}s h${player.hunger} s${player.sleep} b${player.boredom} a${player.age} @${light}`);
 		ticks++;
 		player.hunger=(player.hunger+.03);
 		let hungerLevel=parseInt(player.hunger);
@@ -47,17 +50,24 @@ const timePassing = () =>{
 		let boredLevel=parseInt(player.boredom);
 		console.log(`B${boredLevel}`);
 		$("#bored-level").text(`B${boredLevel}`)
-		player.age=(player.age+.003);
+		player.age=(player.age+.01);
 		let ageLevel=parseInt(player.age);
 		console.log(`A${ageLevel}`);
 		$("#page").text(`Age ${ageLevel}`);
+
+	if (player.hunger>9 || player.sleep>11 || player.boredom>15){
+		$('#sprite').attr('src',"img/dead.png");
+		clearTimeout(timePassing);
+	} else {
+
+	}
 	}
 	
 
 // getNameSubmit/checkButton
 $('#start-button').on('click', () => {
     console.log('clicked Start');
-    let light = true;  
+      
     const timePassed = setInterval(timePassing,1000)
     let name=$('#input-name').val();
     $('#input-name').val('');
@@ -65,6 +75,8 @@ $('#start-button').on('click', () => {
   });
 
 $('#feed-button').on('click', () => {
+
+	$('#sprite').attr('src',"img/eatup.gif");
     console.log('clicked feed'); 
     player.hunger=(player.hunger-.5);
     player.sleep=(player.sleep+.3);
@@ -72,21 +84,22 @@ $('#feed-button').on('click', () => {
     console.log(`${ageLevel}-${player.hunger}-${player.sleep}-${player.boredom}`);
   });
 $('#play-button').on('click', () => {
-    console.log('clicked play'); 
+    $('#sprite').attr('src',"img/funup.gif");
     player.hunger=(player.hunger+.3);
     player.sleep=(player.sleep+.2);
     player.boredom=(player.boredom-.7); 
     console.log(`${ageLevel}-${player.hunger}-${player.sleep}-${player.boredom}`);
   });
 $('#sleep-button').on('click', () => {
-    console.log('clicked sleep'); 
+    $('#sprite').attr('src',"img/sleepup.gif");
     player.hunger=(player.hunger+.5);
     player.sleep=(player.sleep-.8);
     player.boredom=(player.boredom+.1); 
     console.log(`${ageLevel}-${player.hunger}-${player.sleep}-${player.boredom}`);
   });
 $('#light-button').on('click', () => {
-    console.log('clicked light');
+	$(".content1").toggleClass("active");
+    $('#sprite').attr('src',"img/tra.png");
     light = light ? false : true;  
     console.log(`${ageLevel}-${player.hunger}-${player.sleep}-${player.boredom}`);
   });
