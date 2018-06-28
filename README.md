@@ -26,3 +26,4 @@ Let's use our front-end web development skills to create a "living" pet! We'll u
 * with special powers (extends the class)
 * add an excercise method to your tomagotchi, that affects certain properties
 * Add anything you can think of, use your imagination
+# megotchi
