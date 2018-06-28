@@ -39,17 +39,17 @@ const timePassing = () =>{
 		player.hunger=(player.hunger+.03);
 		let hungerLevel=parseInt(player.hunger);
 		console.log(`H${hungerLevel}`);
-		$('#hunger-level').text(`H${hungerLevel}`);
+		$('#hunger-level').text(`Hungry ${hungerLevel}`);
 
 		player.sleep=(player.sleep+.02);
 		let sleepLevel=parseInt(player.sleep);
 		console.log(`S${sleepLevel}`);
-		$("#sleep-level").text(`S${sleepLevel}`);
+		$("#sleep-level").text(`Sleepy ${sleepLevel}`);
 
 		player.boredom=(player.boredom+.04);
 		let boredLevel=parseInt(player.boredom);
 		console.log(`B${boredLevel}`);
-		$("#bored-level").text(`B${boredLevel}`)
+		$("#bored-level").text(`Bored ${boredLevel}`)
 		player.age=(player.age+.01);
 		let ageLevel=parseInt(player.age);
 		console.log(`A${ageLevel}`);
@@ -68,7 +68,7 @@ const timePassing = () =>{
 $('#start-button').on('click', () => {
     console.log('clicked Start');
       
-    const timePassed = setInterval(timePassing,1000)
+    const timePassed = setInterval(timePassing,200)
     let name=$('#input-name').val();
     $('#input-name').val('');
     $('#pname').text(name);
